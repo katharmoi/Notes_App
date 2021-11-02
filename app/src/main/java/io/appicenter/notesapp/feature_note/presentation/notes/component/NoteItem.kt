@@ -18,11 +18,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
+import io.appicenter.notesapp.core.util.TestTags
 import io.appicenter.notesapp.feature_note.domain.model.Note
 
 @Composable
@@ -34,7 +36,10 @@ fun NoteItem(
     onDeleteClick: () -> Unit
 ) {
 
-    Box(modifier = modifier) {
+    Box(
+        modifier = modifier
+            .testTag(TestTags.NOTE_ITEM)
+    ) {
         Canvas(modifier = Modifier.matchParentSize()) {
 
             val clipPath = Path().apply {
@@ -115,7 +120,7 @@ fun PreviewItem() {
     NoteItem(
         note = Note(
             title = "Test Note",
-            content = "Test Content Some bigger contetnt to see the wrapping effects",
+            content = "Test Content Some bigger content to see the wrapping effects",
             timestamp = 1000L,
             color = Color.Blue.toArgb(),
             id = 0

@@ -9,9 +9,12 @@ import androidx.compose.material.icons.filled.Save
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import io.appicenter.notesapp.R
+import io.appicenter.notesapp.core.util.TestTags
 import io.appicenter.notesapp.feature_note.domain.model.Note
 import io.appicenter.notesapp.feature_note.presentation.edit_note.EditNoteEvent
 import io.appicenter.notesapp.feature_note.presentation.edit_note.EditNoteViewModel
@@ -59,7 +62,10 @@ fun EditNoteScreen(
                 backgroundColor = MaterialTheme.colors.primary
             ) {
 
-                Icon(imageVector = Icons.Default.Save, contentDescription = "Save Note")
+                Icon(
+                    imageVector = Icons.Default.Save,
+                    contentDescription = stringResource(id = R.string.save_note)
+                )
 
             }
         },
@@ -96,6 +102,7 @@ fun EditNoteScreen(
                 },
                 isHintVisible = titleState.isHintVisible,
                 isSingleLine = true,
+                testTag = TestTags.TITLE_TEXT_FIELD,
                 textStyle = MaterialTheme.typography.h5
             )
 
@@ -112,6 +119,7 @@ fun EditNoteScreen(
                 },
                 isHintVisible = contentState.isHintVisible,
                 textStyle = MaterialTheme.typography.body1,
+                testTag = TestTags.CONTENT_TEXT_FIELD,
                 modifier = Modifier.fillMaxHeight()
             )
 
